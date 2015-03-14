@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Oskar Gewalli"]
   spec.email         = ["gewalli@gmail.com"]
   spec.summary       = %q{Helper Gem to simplify work with nuget.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/wallymathieu/nuget_helper"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
