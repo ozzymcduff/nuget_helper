@@ -1,0 +1,10 @@
+*.orig
+*.suo
+*.user
+*.pidb
+*.userprefs
+bin/
+obj/
+_ReSharper*/
+packages/
+.vs
