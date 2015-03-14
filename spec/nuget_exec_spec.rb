@@ -14,7 +14,8 @@ describe NugetHelper do
 
             it "can run nunit runner" do
                 cmd = NugetHelper.nunit_path
-                NugetHelper.run_tool cmd, "/help" 
+                help = NugetHelper.os != :windows ? "-help" : "/help"
+                NugetHelper.run_tool cmd, help
                 expect($?.success?).to be true
             end
 
@@ -22,7 +23,11 @@ describe NugetHelper do
                 cmd = NugetHelper.xunit_path
                 c = NugetHelper.run_tool cmd
                 expect(c).to be false
-                expect($?.exitstatus).to be nil
+                if NugetHelper.os != :windows
+                    expect($?.exitstatus).to be 255
+                else
+                    expect($?.exitstatus).to be nil
+                end
             end
         end
     end
