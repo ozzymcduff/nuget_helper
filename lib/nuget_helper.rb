@@ -28,7 +28,8 @@ module NugetHelper
   def self.command_path(library, exe)
     cmds = Dir.glob(File.join("**","packages","#{library}.*","tools",exe))
     if cmds.any?
-        command = cmds.first
+        command = File.expand_path cmds.first
+        return command
     else
       raise "Could not find #{exe} at the packages/#{library}.*/tools/ path!"
     end

@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 $vs_2013_solution = File.join(File.dirname(__FILE__), "Vs2013Solution", "Vs2013Solution.sln")
 
-describe NugetHelper do
+describe "NugetHelper" do
      describe "execute system nuget" do
         it "can restore packages" do
             NugetHelper.exec("restore #{$vs_2013_solution}")
