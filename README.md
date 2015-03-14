@@ -1,6 +1,6 @@
 # NugetHelper
 
-TODO: Write a gem description
+Helper library to simplify the use of nuget in a mixed os environment. It uses [nuget](https://rubygems.org/gems/nuget).
 
 ## Installation
 
@@ -20,7 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+desc "Install missing NuGet packages."
+task :install_packages do
+  NugetHelper.exec("restore LogViewer.sln")
+end
+```
+
+To test together with [albacore](https://github.com/Albacore/albacore)
+
+```ruby
+desc "test using console"
+test_runner :test => [:build] do |runner|
+  runner.exe = NugetHelper.nunit_path
+  files = Dir.glob(File.join($dir,"*Tests","bin","**","*Tests.dll"))
+  runner.files = files 
+end
+```
 
 ## Contributing
 
