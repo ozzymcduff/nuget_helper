@@ -51,4 +51,8 @@ module NugetHelper
       system "mono --runtime=v4.0.30319 #{command} #{parameters} "
     end
   end
+
+  def self.version_of(file)
+    file.gsub(/[a-zA-Z]\.?/,'').split(/\./).map do |i| i.to_i end
+  end
 end
