@@ -40,7 +40,7 @@ module NugetHelper
   end
 
   def self.xunit_path
-    self.command_path('xunit.runners', 'xunit.console.exe')
+    self.command_path('xunit.runner.console', 'xunit.console.exe')
   end
 
   def self.run_tool(command, parameters=nil)

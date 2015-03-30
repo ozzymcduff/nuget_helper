@@ -24,7 +24,7 @@ describe "NugetHelper" do
                 c = NugetHelper.run_tool cmd
                 expect(c).to be false
                 if NugetHelper.os != :windows
-                    expect($?.exitstatus).to be 255
+                    expect($?.exitstatus).to be 1 
                 else
                     expect($?.exitstatus).to be nil
                 end
