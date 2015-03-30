@@ -1,6 +1,7 @@
 version: 1.0.{build}
 install:
-  - choco install ruby
+  - cinst ruby
+  - gem install bundler
   - bundle install
 build_script:
   - rspec
