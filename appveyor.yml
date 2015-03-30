@@ -1,0 +1,7 @@
+version: 1.0.{build}
+install:
+  - choco install ruby
+  - bundle install
+build_script:
+  - rspec
+
