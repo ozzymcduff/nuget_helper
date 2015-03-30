@@ -40,7 +40,7 @@ module NugetHelper
   end
 
   def self.xunit_path
-    self.command_path('xunit.runners', 'xunit.console.clr4.exe')
+    self.command_path('xunit.runners', 'xunit.console.exe')
   end
 
   def self.run_tool(command, parameters=nil)
@@ -55,4 +55,11 @@ module NugetHelper
   def self.version_of(file)
     file.gsub(/[a-zA-Z]\.?/,'').split(/\./).map do |i| i.to_i end
   end
+
+  def self.last_version(files)
+    files.max_by do |l|
+      self.version_of(l)
+    end
+  end
+
 end
