@@ -1,4 +1,4 @@
-# NugetHelper [![Build Status](https://travis-ci.org/wallymathieu/nuget_helper.svg)](https://travis-ci.org/wallymathieu/nuget_helper)
+# NugetHelper [![Build Status](https://travis-ci.org/wallymathieu/nuget_helper.svg)](https://travis-ci.org/wallymathieu/nuget_helper) [![Build status](https://ci.appveyor.com/api/projects/status/jabjjby3t7m87net/branch/master?svg=true)](https://ci.appveyor.com/project/wallymathieu/nuget-helper/branch/master)
 
 Helper library to simplify the use of nuget in a mixed os environment. It uses [nuget](https://rubygems.org/gems/nuget).
 
