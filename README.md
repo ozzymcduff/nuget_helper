@@ -1,4 +1,4 @@
-# NugetHelper
+# NugetHelper [![Build Status](https://travis-ci.org/wallymathieu/nuget_helper.svg)](https://travis-ci.org/wallymathieu/nuget_helper)
 
 Helper library to simplify the use of nuget in a mixed os environment. It uses [nuget](https://rubygems.org/gems/nuget).
 
