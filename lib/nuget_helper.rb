@@ -26,13 +26,11 @@ module NugetHelper
   end
 
   def self.command_path(library, exe)
-    cmds = Dir.glob(File.join("**","packages","#{library}.*","tools",exe))
-    if cmds.any?
-        command = File.expand_path cmds.first
-        return command
-    else
+    cmd = self.first_command_path(library, exe)
+    if cmd.nil?
       raise "Could not find #{exe} at the packages/#{library}.*/tools/ path!"
     end
+    return cmd
   end
 
   def self.nunit_path
@@ -40,7 +38,11 @@ module NugetHelper
   end
 
   def self.xunit_path
-    self.command_path('xunit.runner.console', 'xunit.console.exe')
+    old_xunit = self.first_command_path('xunit.runners', 'xunit.console.exe')
+    if not old_xunit.nil?
+      return old_xunit
+    end
+    return self.command_path('xunit.runner.console', 'xunit.console.exe')
   end
 
   def self.run_tool(command, parameters=nil)
@@ -62,4 +64,14 @@ module NugetHelper
     end
   end
 
+  private
+  def self.first_command_path(library, exe)
+    cmds = Dir.glob(File.join("**","packages","#{library}.*","tools",exe))
+    if cmds.any?
+      command = File.expand_path cmds.first
+      return command
+    else
+      return nil
+    end
+  end
 end
