@@ -23,11 +23,7 @@ describe "NugetHelper" do
                 cmd = NugetHelper.xunit_path
                 c = NugetHelper.run_tool cmd
                 expect(c).to be false
-                if NugetHelper.os != :windows
-                    expect($?.exitstatus).to be 1 
-                else
-                    expect($?.exitstatus).to be nil
-                end
+                expect($?.exitstatus).to be 1 
             end
         end
     end
