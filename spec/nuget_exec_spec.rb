@@ -39,6 +39,13 @@ describe "NugetHelper" do
                 expect(c).to be false
                 expect($?.exitstatus).to be 1 
             end
+
+            it "can run nspec runner" do
+                cmd = NugetHelper.nspec_path
+                c = NugetHelper.run_tool cmd
+                expect(c).to be true 
+                expect($?.exitstatus).to be 0 
+            end
         end
     end
 end

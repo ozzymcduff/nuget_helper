@@ -53,6 +53,10 @@ module NugetHelper
     self.command_path('Machine.Specifications', 'mspec-clr4.exe')
   end
 
+  def self.nspec_path
+    self.command_path('nspec', 'NSpecRunner.exe')
+  end
+
   def self.run_tool(command, parameters=nil)
     parameters = '' if parameters.nil?
     if self.os == :windows
