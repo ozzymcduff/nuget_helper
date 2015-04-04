@@ -38,15 +38,15 @@ module NugetHelper
   end
 
   def self.xunit_clr4_path
-    self.command_path('xunit.runners', 'xunit.console-clr4.exe')
+    self.command_path('xunit.runners', 'xunit.console.clr4.exe')
   end
 
   def self.xunit_path
-    old_xunit = self.first_command_path('xunit.runners', 'xunit.console-clr4.exe')
-    if not old_xunit.nil?
-      return old_xunit
-    end
-    return self.command_path('xunit.runner.console', 'xunit.console.exe')
+    self.command_path('xunit.runners', 'xunit.console.exe')
+  end
+
+  def self.xunit2_path
+    self.command_path('xunit.runner.console', 'xunit.console.exe')
   end
 
   def self.mspec_path

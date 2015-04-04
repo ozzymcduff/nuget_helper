@@ -19,11 +19,18 @@ describe "NugetHelper" do
                 expect($?.success?).to be true
             end
 
-            it "can run xunit runner" do
-                cmd = NugetHelper.xunit_path
+            it "can run xunit2 runner" do
+                cmd = NugetHelper.xunit2_path
                 c = NugetHelper.run_tool cmd
                 expect(c).to be false
                 expect($?.exitstatus).to be 1 
+            end
+
+            it "can run xunit clr4 runner" do
+                cmd = NugetHelper.xunit_clr4_path
+                c = NugetHelper.run_tool cmd
+                expect(c).to be false
+                #expect($?.exitstatus).to be 1 
             end
 
             it "can run mspec runner" do
