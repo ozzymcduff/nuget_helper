@@ -82,7 +82,7 @@ module NugetHelper
 
   private
   def self.first_command_path(library, exe)
-    cmds = Dir.glob(File.join("**","packages","#{library}.*","tools",exe))
+    cmds = Dir.glob(File.join("**","packages","#{library}*","tools",exe))
     if cmds.any?
       command = File.expand_path cmds.first
       return command
