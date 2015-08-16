@@ -14,7 +14,7 @@ describe "NugetHelper" do
 
             it "can run nunit runner" do
                 cmd = NugetHelper.nunit_path
-                help = NugetHelper.os != :windows ? "-help" : "/help"
+                help = Gem.win_platform? ? "/help" : "-help"
                 NugetHelper.run_tool cmd, help
                 expect($?.success?).to be true
             end
