@@ -28,7 +28,7 @@ module NugetHelper
   def self.command_path(library, exe)
     cmd = self.first_command_path(library, exe)
     if cmd.nil?
-      raise "Could not find #{exe} at the packages/#{library}.*/tools/ path!"
+      raise "Could not find #{exe} at the packages/#{library}*/tools/ path!"
     end
     return cmd
   end
