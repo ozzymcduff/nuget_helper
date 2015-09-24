@@ -22,5 +22,9 @@ describe "NugetHelper" do
         it "can parse out version" do
             expect( NugetHelper.version_of 'somelib.something.35.63.7').to eq [35,63,7]
         end
+
+        it "can determine latest version of" do
+            expect( NugetHelper.last_version ['With.0.4.7.nupkg','With.1.0.2.nupkg','With.1.0.1.nupkg']).to eq 'With.1.0.2.nupkg'
+        end
     end
 end

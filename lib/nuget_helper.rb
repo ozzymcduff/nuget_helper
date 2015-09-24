@@ -53,7 +53,7 @@ module NugetHelper
   end
 
   def self.version_of(file)
-    file.gsub(/[a-zA-Z]\.?/,'').split(/\./).map do |i| i.to_i end
+    file.gsub(/[a-zA-Z]\.?/,'').split(/\./).map do |i| i.to_i end.to_a
   end
 
   def self.last_version(files)
