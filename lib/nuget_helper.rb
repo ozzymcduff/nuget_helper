@@ -1,4 +1,5 @@
 require "nuget_helper/version"
+require "Open3"
 
 module NugetHelper
   def self.exec(parameters)
@@ -44,12 +45,15 @@ module NugetHelper
   end
 
   def self.run_tool(command, parameters=nil)
-    parameters = '' if parameters.nil?
-    if Gem.win_platform? 
-      system "#{command} #{parameters}"
-    else
-      system "mono --runtime=v4.0 #{command} #{parameters} "
+    system( to_shell_string( command, parameters))
+  end
+
+  def self.run_tool_with_result(command, parameters=nil)
+    stdout_str, stderr_str, status= Open3.capture3( to_shell_string( command, parameters))
+    if ! status.success? 
+      raise stderr_str
     end
+    stdout_str
   end
 
   def self.version_of(file)
@@ -63,6 +67,14 @@ module NugetHelper
   end
 
   private
+  def self.to_shell_string(command, parameters)
+    parameters = '' if parameters.nil?
+    if Gem.win_platform? 
+      "#{command} #{parameters}"
+    else
+      "mono --runtime=v4.0 #{command} #{parameters} "
+    end
+  end
   def self.first_command_path(library, exe)
     cmds = Dir.glob(File.join("**","packages","#{library}*","tools",exe))
     if cmds.any?

@@ -19,6 +19,18 @@ describe "NugetHelper" do
                 expect($?.success?).to be true
             end
 
+            it "can run nunit runner and get result" do
+                cmd = NugetHelper.nunit_path
+                help = Gem.win_platform? ? "/help" : "-help"
+                res= NugetHelper.run_tool_with_result cmd, help
+                expect(res).not_to be_empty
+            end
+
+            it "can run nunit runner and fail" do
+                cmd = NugetHelper.nunit_path
+                expect { NugetHelper.run_tool_with_result "xxxyyy" }.to raise_error
+            end
+
             it "can run xunit2 runner" do
                 cmd = NugetHelper.xunit2_path
                 c = NugetHelper.run_tool cmd
