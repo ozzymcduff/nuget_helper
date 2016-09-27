@@ -46,6 +46,10 @@ module NugetHelper
     self.command_path('nspec', 'NSpecRunner.exe')
   end
 
+  def self.semver_fromassembly_path
+    self.command_path('SemVer.FromAssembly', 'SemVer.FromAssembly.exe')
+  end
+
   def self.run_tool(command, parameters=nil)
     system( to_shell_string( command, parameters))
   end
