@@ -1,7 +1,10 @@
 require_relative 'spec_helper'
+require 'xsemver'
+
 $vs_2013_solution = File.join(File.dirname(__FILE__), "Vs2013Solution", "Vs2013Solution.sln")
 $nunit_dll_path = File.join(File.dirname(__FILE__), "Vs2013Solution", "packages","NUnit.2.6.4","lib","nunit.framework.dll" )
 describe "NugetHelper" do
+  include XSemVer
   describe "execute system nuget" do
     it "can restore packages" do
       NugetHelper.exec("restore #{$vs_2013_solution}")
@@ -72,6 +75,12 @@ describe "NugetHelper" do
         c = NugetHelper.run_tool cmd, " --magnitude #{file} #{file}"
         expect(c).to be true 
         expect($?.exitstatus).to be 0 
+      end
+
+      it "can give next version" do
+        m, v = NugetHelper.magnitude_next_nuget_version "SemVer.FromAssembly", NugetHelper.semver_fromassembly_path
+        expect(m).to be :patch
+        expect(v).to eq SemVer.new(0,0,8)
       end
     end
   end

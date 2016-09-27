@@ -1,5 +1,6 @@
 require "nokogiri"
-require "semver"
+require 'xsemver'
+
 module NugetHelper
   class NuSpec
     attr_reader :nuspec_path_base, :nuspec_filename, :nuspec_xml_node
@@ -12,7 +13,7 @@ module NugetHelper
     end
     def version
       el = @nuspec_xml_node.xpath("/package/metadata/version")
-      SemVer.parse(el.text)
+      XSemVer::SemVer.parse(el.text)
     end
   end
 end
