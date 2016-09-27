@@ -59,7 +59,7 @@ module NugetHelper
   end
 
   def self.version_of(file)
-    SemVer.parse(file.gsub(/^[a-zA-Z]\.?/,'').gsub(/\.nupkg$/, ''))
+    SemVer.parse(file.gsub(/\.nupkg$/, ''))
   end
 
   def self.last_version(files)
