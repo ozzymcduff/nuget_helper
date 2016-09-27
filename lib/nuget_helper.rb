@@ -1,5 +1,6 @@
-require "nuget_helper/version"
-require "Open3"
+require_relative "./nuget_helper/version"
+require_relative "./nuget_helper/nuspec"
+require "open3"
 
 module NugetHelper
   def self.exec(parameters)
