@@ -21,4 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency 'rspec', '>= 3.2'
   spec.add_dependency "nuget", '~> 2.8.50126.400'
+  spec.add_dependency 'semver2', '~> 3.4'
+  spec.add_dependency 'nokogiri', '~> 1.5' # used to manipulate and read *nuspec files
+  
 end

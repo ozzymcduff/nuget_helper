@@ -1,5 +1,7 @@
 require_relative "./nuget_helper/version"
+require_relative "./nuget_helper/nuspec"
 require "open3"
+require "semver"
 
 module NugetHelper
   def self.exec(parameters)
@@ -57,7 +59,7 @@ module NugetHelper
   end
 
   def self.version_of(file)
-    file.gsub(/[a-zA-Z]\.?/,'').split(/\./).map do |i| i.to_i end.to_a
+    SemVer.parse(file.gsub(/^[a-zA-Z]\.?/,'').gsub(/\.nupkg$/, ''))
   end
 
   def self.last_version(files)
