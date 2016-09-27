@@ -77,6 +77,7 @@ describe "NugetHelper" do
         expect($?.exitstatus).to be 0 
       end
 
+      # this does not belong here, should be moved:
       it "can give next version" do
         m, v = NugetHelper.magnitude_next_nuget_version "SemVer.FromAssembly", NugetHelper.semver_fromassembly_path
         expect(m).to be :patch
