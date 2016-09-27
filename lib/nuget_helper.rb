@@ -1,5 +1,4 @@
 require_relative "./nuget_helper/version"
-require_relative "./nuget_helper/nuspec"
 require "open3"
 
 module NugetHelper
