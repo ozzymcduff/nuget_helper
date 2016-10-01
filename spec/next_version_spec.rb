@@ -2,6 +2,7 @@ require_relative 'spec_helper'
 require "tmpdir"
 require "fileutils"
 require "securerandom"
+$vs_2013_solution = File.join(File.dirname(__FILE__), "Vs2013Solution", "Vs2013Solution.sln")
 
 def magnitude_next_nuget_version(package_name, next_dll)
   begin
@@ -28,6 +29,9 @@ def magnitude_next_nuget_version(package_name, next_dll)
 end
 
 describe "magnitude_next_nuget_version" do
+  before(:all) do
+    NugetHelper.exec("restore #{$vs_2013_solution}")
+  end
   it "can give next version" do
     m, v = magnitude_next_nuget_version "SemVer.FromAssembly", NugetHelper.semver_fromassembly_path
     expect(m).to be :patch
