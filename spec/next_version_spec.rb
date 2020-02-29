@@ -32,7 +32,7 @@ describe "magnitude_next_nuget_version" do
   before(:all) do
     NugetHelper.exec("restore #{$vs_2013_solution}")
   end
-  it "can give next version" do
+  xit "can give next version" do
     m, v = magnitude_next_nuget_version "SemVer.FromAssembly", NugetHelper.semver_fromassembly_path
     expect(m).to be :patch
     expect(v).to eq SemVer.new(0,0,9) # this is ugly, but will do for now
